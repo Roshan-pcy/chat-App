@@ -67,6 +67,7 @@ class ChatRoom extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+          margin: EdgeInsets.only(right: isme ? 0 : 50, left: isme ? 50 : 0),
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -75,8 +76,8 @@ class ChatRoom extends StatelessWidget {
                   bottomLeft: Radius.circular(10),
                   topRight: isme ? Radius.circular(0) : Radius.circular(10)),
               color: isme
-                  ? Color.fromARGB(255, 68, 68, 200)
-                  : Color.fromARGB(255, 132, 18, 103)),
+                  ? Color.fromARGB(255, 154, 154, 223)
+                  : Color.fromARGB(255, 206, 151, 192)),
           child: Text(
             data['message'],
           )),

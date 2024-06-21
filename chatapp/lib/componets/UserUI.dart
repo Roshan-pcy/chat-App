@@ -10,11 +10,26 @@ class UserUi extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: const EdgeInsets.all(10),
+        height: 50,
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.secondary,
-            borderRadius: BorderRadius.circular(10)),
+            color: Colors.red[100], borderRadius: BorderRadius.circular(10)),
         child: Row(
-          children: [const Icon(Icons.person), Text(username)],
+          children: [
+            const Icon(
+              Icons.person,
+              size: 50,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              username,
+              style: const TextStyle(
+                  color: Color.fromARGB(255, 102, 171, 23),
+                  fontWeight: FontWeight.bold),
+            )
+          ],
         ),
       ),
     );
