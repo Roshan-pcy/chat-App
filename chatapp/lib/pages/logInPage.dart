@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(e.toString()),
+            title: Text(e.toString(), style: const TextStyle(fontSize: 30)),
           );
         },
       );
