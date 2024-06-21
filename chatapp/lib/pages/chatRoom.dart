@@ -36,7 +36,7 @@ class ChatRoom extends StatelessWidget {
   Widget _buiderView() {
     final userId = auth.isMe()!.uid;
     return StreamBuilder(
-      stream: chatRoom.getMessage(userId, uid),
+      stream: chatRoom.getMessage(uid, userId),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Text('error');
@@ -44,7 +44,9 @@ class ChatRoom extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         }
-        print(snapshot.data!.docs.length);
+        if (snapshot.data!.docs.isEmpty) {
+          return const Center(child: Text('No message'));
+        }
 
         return ListView(
           children: snapshot.data!.docs
@@ -58,9 +60,27 @@ class ChatRoom extends StatelessWidget {
   }
 
   Widget _showMessageWidget(DocumentSnapshot value) {
-    // Map<String, dynamic> data = value.data() as Map<String, dynamic>;
-    // print(data['senderEmial']);
-    return Text('hello');
+    Map<String, dynamic> data = value.data() as Map<String, dynamic>;
+
+    bool isme = data['senderEmial'] == auth.isMe()!.email;
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: isme ? Radius.circular(10) : Radius.circular(0),
+                  bottomRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  topRight: isme ? Radius.circular(0) : Radius.circular(10)),
+              color: isme
+                  ? Color.fromARGB(255, 68, 68, 200)
+                  : Color.fromARGB(255, 132, 18, 103)),
+          child: Text(
+            data['message'],
+          )),
+    );
   }
 
   Widget _userInput() {

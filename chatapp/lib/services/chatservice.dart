@@ -48,16 +48,6 @@ class ChatService {
 //get message
 
   Stream<QuerySnapshot> getMessage(String userid, String otherUserId) {
-    // final String currentUserId = firebaseAuth.currentUser!.uid;
-    // final String currentEmail = firebaseAuth.currentUser!.email!;
-    // final Timestamp timestamp = Timestamp.now();
-
-    // final Messageclass messageclass = Messageclass(
-    //     message: message,
-    //     reciverId: reciverId,
-    //     senderEmail: currentEmail,
-    //     senderID: currentUserId,
-    //     timestamp: timestamp);
     List<String> list = [userid, otherUserId];
     list.sort();
     String chatRoom = list.join('_');
@@ -66,7 +56,7 @@ class ChatService {
         .collection('chat_room')
         .doc(chatRoom)
         .collection('message')
-        .orderBy("timestamp", descending: false)
+        .orderBy("Timestamp", descending: false)
         .snapshots();
   }
 }
