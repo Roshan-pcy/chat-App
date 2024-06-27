@@ -1,6 +1,5 @@
 import 'package:chatapp/firebase_options.dart';
 import 'package:chatapp/pages/CheckAuth.dart';
-import 'package:chatapp/pages/LogInRegister.dart';
 import 'package:chatapp/theme/light_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
