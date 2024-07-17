@@ -13,7 +13,8 @@ class UserUi extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         height: 50,
         decoration: BoxDecoration(
-            color: Colors.red[100], borderRadius: BorderRadius.circular(10)),
+            color: Color.fromARGB(255, 84, 51, 203),
+            borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [
             const Icon(

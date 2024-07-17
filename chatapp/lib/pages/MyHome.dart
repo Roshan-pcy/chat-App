@@ -20,6 +20,7 @@ class _MyhomeState extends State<Myhome> {
     return Scaffold(
       drawer: const DrawerUi(),
       appBar: AppBar(
+        backgroundColor: Colors.green,
         actions: [
           IconButton(
               onPressed: () {

@@ -25,7 +25,12 @@ class ChatRoom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
+        backgroundColor: Colors.green,
+        title: Text(
+          name,
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+        ),
       ),
       body: Column(
         children: [Expanded(child: _buiderView()), _userInput()],
@@ -42,7 +47,7 @@ class ChatRoom extends StatelessWidget {
           return const Text('error');
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.data!.docs.isEmpty) {
           return const Center(child: Text('No message'));
